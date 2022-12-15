@@ -1,0 +1,54 @@
+# Calculadora Bison & Flex 
+
+El código abarca una implimentación básica de una calculadora empleando 
+FLEX y BISON para el reconocmiento de caracteres y procesado.
+
+
+## Compilación:
+
+El siguiente script depende de "bison" y "flex" para poder generar el 
+ejecutable
+
+>>./compilar.sh
+
+IMPORTANTE
+La compilación se ha probado en ARM y x86. Además, de en distintas distribución de Linux.
+
+El binario adjunto únicamente es válido para arquitectura ARM, es necesario ejecutar el script "./compilar.sh" para poder ejecutar la calculadora sin inconvenientes.
+
+La salida resultante es un ejecutable llamado "Calculadora" que permite 
+realizar las siguientes operaciones
+
+## Características
+Una vez ejecutado, se pueden realizar las siguientes operaciones desde la 
+línea de comandos
+
+2.1 Operaciones simples:
+Operaciones aritméticas básicas, +, *, / y -. El resultado se mostrará por 
+pantalla
+
+2.3 Operaciones de funciones:
+Invocadas por el nombre de la función: 
+ejem: "sin(pi)" imprimirá 0 por pantalla 
+
+2.4 Comandos disponibles
+-QUIT: cierra el programa, y libera toda la memoria.
+
+-ECHO: muestra/oculta el resultado de los cálculos por pantalla. 
+	En caso de encontrarse desactivada la impresión el resultado de operaciones aritméticas simples o llamadas a funciones no se mostrará por pantalla.  También es posible escapar la impresión por pantalla introduciendo un ";" al final de la sentencia.
+
+-WORKSPACE: Imprime las variables que se han definido en la sesión de trabajo.
+
+-CLEAR: Borra todas las variables definidas en el espacio de trabajo.
+
+-FROMFILE "nombre archivo": permite cargar archivos ".m" con una lista de comandos separados por saltos de línea y ejecutarlos. Todas las variables que se guarden así como la librería que se carge seguirá estando disponible en el hilo principal del programa una vez finalizada la lectura del archivo.
+
+-LOAD "nombre librería": carga una librería para poder utilizar las funciones que posee (la librería debe terminar en ".h", ".so", ".dylib", ".lib", ".m"). Unicamente, es posible utilizar ".h" si es para hacer referencia a la librería "math.h", en este caso se cargará por defecto la libraría "libm.so.6" del sistema. Esta función únicamente es aplicable en el caso de disponer de la librería matemática en la distribución que se encuentre ejecutando.
+
+2.5 Asignaciones
+Se puede asignar a cualquier variable alfanumérica, distinta de las palabras reservadas para constantes y comandos, valores resultado de las operaciones.
+ejmp: var1 = 2+2
+
+2.6 Constantes predefinidas 
+Se encuentran definidas las constantes "fi", "e" y "pi". Su modificación o reasignación está bloqueada por el programa.
+   
